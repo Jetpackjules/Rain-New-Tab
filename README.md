@@ -26,11 +26,11 @@ Start-Process "$env:TEMP\nvm\nvm-setup.exe"
 
 Then follow installation process and relaunch Editor/Terminal.
 
-Run
+Run this to make sure it properly installed:
 ```
 nvm version
 ```
-to make sure it properly installed.
+
 
 Now we need to download node version 10:
 ```
