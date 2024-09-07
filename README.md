@@ -11,10 +11,10 @@ Credit to Lucas bebber for creating the rain effect used!
 
 Run in the folder:
 
-'''
+```
 npm install
 npm install gulp@3.9.1 --save-dev
-'''
+```
 ### Download nvm (for older node version):
 
 #### FOR WINDOWS:
