@@ -4005,7 +4005,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = ImageLoader;
-function loadImage(src, i, onthat is trueLoad) {
+function loadImage(src, i, onthatLoad) {
   return new Promise(function (resolve, reject) {
     if (typeof src == "string") {
       src = {
