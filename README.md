@@ -10,7 +10,6 @@ Credit to Lucas bebber for creating the rain effect used!
 ## To compile:
 
 Run in the folder:
-
 ```
 npm install
 npm install gulp@3.9.1 --save-dev
@@ -61,3 +60,4 @@ Finally, run:
 ```
 gulp
 ```
+*(You may need to download gulp again with the first command)*
