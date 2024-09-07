@@ -22,41 +22,37 @@ npm install gulp@3.9.1 --save-dev
 >Expand-Archive -Path "$env:TEMP\nvm-setup.zip" -DestinationPath "$env:TEMP\nvm"
 >Start-Process "$env:TEMP\nvm\nvm-setup.exe"
 >```
-
-Then follow installation process and relaunch Editor/Terminal.
-
-Run this to make sure it properly installed:
-```
-nvm version
-```
-
-
-Now we need to download node version 10:
-```
-nvm install 10
-nvm use 10
-node -v
-```
+>
+>Then follow installation process and relaunch Editor/Terminal.
+>
+>Run this to make sure it properly installed:
+>```
+>nvm version
+>```
+>
+>
+>Now we need to download node version 10:
+>```
+>nvm install 10
+>nvm use 10
+>node -v
+>```
 
 
 #### FOR MAC (After the other stuff):
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
-
-Then run:
-
-```
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-```
-Relaunch Editor/Terminal
-
-### To Compile:
+>```
+>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+>```
+>
+>Then run:
+>```
+>export NVM_DIR="$HOME/.nvm"
+>[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+>[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+>```
+>Relaunch Editor/Terminal
 
 Finally, run:
-
 ```
 gulp
 ```
