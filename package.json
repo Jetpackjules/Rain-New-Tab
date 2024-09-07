@@ -1,0 +1,46 @@
+{
+  "name": "rain-effect",
+  "version": "1.0.0",
+  "description": "Rain Effects with WebGL and Canvas",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codrops/RainEffect.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN http://tympanus.net/codrops/licensing/",
+  "homepage": "https://github.com/codrops/RainEffect",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "core-js": "^1.2.3",
+    "extend": "^3.0.0",
+    "fs": "^0.0.2",
+    "glslify": "^7.1.1",
+    "gsap": "^3.12.5",
+    "gulp": "https://github.com/gulpjs/gulp/archive/refs/tags/v3.9.1.tar.gz",
+    "gulp-babel": "^8.0.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^3.0.2",
+    "uglify-js": "^2.5.0",
+    "vinyl-source-stream": "^1.1.2"
+  },
+  "dependencies": {
+    "audit": "^0.0.6",
+    "fix": "^0.0.3",
+    "graceful-fs": "^4.2.11",
+    "next": "^14.2.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
