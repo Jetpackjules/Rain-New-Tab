@@ -6,6 +6,7 @@
 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
+
 *,
 *:after,
 *:before {
@@ -53,6 +54,13 @@ a:focus {
 
 
 /* Header */
+#root {
+    position: absolute;
+    top: 1.0em;
+    right: 1.5em; 
+    /* z-index: 150; Ensure it's above other elements */
+}
+
 
 .codrops-header {
 	padding: 2.5em 2em 0;

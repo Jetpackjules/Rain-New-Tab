@@ -6,7 +6,8 @@ import createCanvas from "./create-canvas";
 import TweenLite from 'gsap';
 import times from './times';
 import {random,chance} from './random';
-import "./weather";
+import "./weather"; // Load in the weather
+import "./settings" // load settings?
 import { Quint, gsap } from "gsap";
 
 let textureRainFg, textureRainBg,
@@ -312,6 +313,3 @@ function generateTextures(fg,bg,alpha=1){
   textureBgCtx.globalAlpha=alpha;
   textureBgCtx.drawImage(bg,0,0,textureBgSize.width,textureBgSize.height);
 }
-
-
-
