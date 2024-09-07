@@ -11,18 +11,18 @@ Credit to Lucas bebber for creating the rain effect used!
 
 Run in the folder:
 
-'''
+```
 npm install
 npm install gulp@3.9.1 --save-dev
-'''
+```
 ### Download nvm (for older node version):
 
 #### FOR WINDOWS:
-```
-Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.10/nvm-setup.zip" -OutFile "$env:TEMP\nvm-setup.zip"
-Expand-Archive -Path "$env:TEMP\nvm-setup.zip" -DestinationPath "$env:TEMP\nvm"
-Start-Process "$env:TEMP\nvm\nvm-setup.exe"
-```
+>```
+>Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.10/nvm-setup.zip" -OutFile >"$env:TEMP\nvm-setup.zip"
+>Expand-Archive -Path "$env:TEMP\nvm-setup.zip" -DestinationPath "$env:TEMP\nvm"
+>Start-Process "$env:TEMP\nvm\nvm-setup.exe"
+>```
 
 Then follow installation process and relaunch Editor/Terminal.
 
