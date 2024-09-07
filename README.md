@@ -53,10 +53,7 @@ npm install gulp@3.9.1 --save-dev
 >```
 >Relaunch Editor/Terminal
 
-### To Compile:
-
 Finally, run:
-
 ```
 gulp
 ```
