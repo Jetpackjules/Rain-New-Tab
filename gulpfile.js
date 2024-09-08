@@ -23,7 +23,7 @@ var gulp = require('gulp'),
     .on("error", function (err) { console.log("Error : " + err.message); })
     .pipe(source(file+'.min.js'))
     .pipe(streamify(uglify()))
-    .pipe(gulp.dest('demo/js'));
+    .pipe(gulp.dest('rainyExtension/js'));
 }
 
 // Gulp task to process Tailwind CSS
@@ -33,7 +33,7 @@ gulp.task('css', function () {
       tailwindcss,
       autoprefixer
     ]))
-    .pipe(gulp.dest('demo/css'));
+    .pipe(gulp.dest('rainyExtension/css'));
 });
 
 gulp.task('default',['js1','js2','js3','js-settings','css'],function(){});

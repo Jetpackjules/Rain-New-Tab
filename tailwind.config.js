@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './demo/index.html'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './rainyExtension/index.html'],
   theme: {
     extend: {},
   },
