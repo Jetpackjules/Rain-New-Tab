@@ -1,7 +1,10 @@
 // import { format } from "core-js/core/date";
 // import { dat } from "core-js/core/date";
 
+
 document.addEventListener('DOMContentLoaded', function() {
+
+
     const apiKey = 'de3350f1d7c1da5fd5618c7db34c129b'; // Replace with your actual API key
 
     // Function to fetch weather data
@@ -9,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("COORDS", lat, lon)
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
         // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=10&lon=20.3&appid=de3350f1d7c1da5fd5618c7db34c129b&units=imperial`;
-        
+
         fetch(apiUrl)
             .then(response => response.json())
             .then(data => {

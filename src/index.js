@@ -6,9 +6,59 @@ import createCanvas from "./create-canvas";
 import TweenLite from 'gsap';
 import times from './times';
 import {random,chance} from './random';
-import "./weather"; // Load in the weather
-import "./settings" // load settings?
+import "./weather";
 import { Quint, gsap } from "gsap";
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   // Apply initial visibility settings
+//   applyInitialVisibility();
+// });
+
+// function applyInitialVisibility() {
+//   const temperatureVisible = localStorage.getItem('temperatureVisible') === 'true';
+//   const weatherVisible = localStorage.getItem('weatherVisible') === 'true';
+
+//   updateVisibility('temperature-module', temperatureVisible);
+//   updateVisibility('weather-module', weatherVisible);
+// }
+
+// function updateVisibility(elementId, isVisible) {
+//   const element = document.getElementById(elementId);
+//   if (element) {
+//     if (isVisible) {
+//       element.classList.remove('hidden');
+//     } else {
+//       element.classList.add('hidden');
+//     }
+//   }
+// }
+
+// document.addEventListener('visibilitychange', () => {
+//   if (document.hidden) {
+//     pauseAnimations();
+//   } else {
+//     resumeAnimations();
+//   }
+// });
+
+// function pauseAnimations() {
+//   // Pause any ongoing animations or rendering loops
+//   cancelAnimationFrame(animationFrameId);
+// }
+
+// function resumeAnimations() {
+//   // Resume animations or rendering loops
+//   animationFrameId = requestAnimationFrame(updateTextures);
+// }
+
+function toggleVisibility(setVisibility, isVisible, storageKey, elementId) {
+  const newVisibility = !isVisible;
+  setVisibility(newVisibility);
+  localStorage.setItem(storageKey, newVisibility);
+  updateVisibility(elementId, newVisibility);
+}
+
 
 let textureRainFg, textureRainBg,
   textureStormLightningFg, textureStormLightningBg,
@@ -313,3 +363,42 @@ function generateTextures(fg,bg,alpha=1){
   textureBgCtx.globalAlpha=alpha;
   textureBgCtx.drawImage(bg,0,0,textureBgSize.width,textureBgSize.height);
 }
+
+// import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+
+function Example() {
+  function showSettingsDialog() {
+    alert('Open settings dialog!')
+  }
+
+  return (
+    <Menu>
+      <MenuButton>My account</MenuButton>
+      <MenuItems anchor="bottom">
+        <MenuItem>
+          <button onClick={showSettingsDialog} className="block w-full text-left data-[focus]:bg-blue-100">
+            Settings
+          </button>
+        </MenuItem>
+        <MenuItem>
+          <a className="block data-[focus]:bg-blue-100" href="/support">
+            Support
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <a className="block data-[focus]:bg-blue-100" href="/license">
+            License
+          </a>
+        </MenuItem>
+        <form action="/logout" method="post">
+          <MenuItem>
+            <button type="submit" className="block w-full text-left data-[focus]:bg-blue-100">
+              Sign out
+            </button>
+          </MenuItem>
+        </form>
+      </MenuItems>
+    </Menu>
+  )
+}
+

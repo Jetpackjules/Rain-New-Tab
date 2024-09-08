@@ -5,6 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<title>Rain Effect Experiments | Demo 1 | Codrops</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -42,14 +43,13 @@
 			<div id="root" class="absolute top-40 right-4 z-50"></div>
 
 		</header>
-
 		<div class="slideshow">
 			<canvas width="1" height="1" id="container" style="position:absolute"></canvas>
-
+ 
 			<!-- Heavy Rain -->
 			<div class="slide" id="slide-1" data-weather="rain">
-				<div class="slide__element slide__element--date">Date Pending...</div>
-				<div class="slide__element slide__element--temp">..°<small>F</small></div>
+				<div class="slide__element slide__element--date hidden" id="date-module">Date Pending...</div>
+				<div class="slide__element slide__element--temp hidden" id="temperature-module">..°<small>F</small></div>
 			</div>
 			<!-- Drizzle -->
 			<div class="slide" id="slide-2" data-weather="drizzle">
@@ -71,7 +71,7 @@
 				<div class="slide__element slide__element--date">Date Pending...</div>
 				<div class="slide__element slide__element--temp">..°<small>F</small></div>
 			</div>
-			<nav class="slideshow__nav">
+			<nav class="slideshow__nav hidden" id="weather-module">
 				<a class="nav-item" href="#slide-1"><i class="icon icon--rainy"></i><span>10/24</span></a>
 				<a class="nav-item" href="#slide-2"><i class="icon icon--drizzle"></i><span>10/25</span></a>
 				<a class="nav-item" href="#slide-3"><i class="icon icon--sun"></i><span>10/26</span></a>
