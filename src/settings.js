@@ -61,12 +61,12 @@ export default function SettingsMenu() {
     <Menu as="div" className="relative inline-block text-left z-10">
       <div>
         <Menu.Button className="inline-flex justify-center w-full rounded-md border-none shadow-none bg-transparent text-sm font-medium text-white-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-          <CogIcon className="h-8 w-8 text-white-600 opacity-40" aria-hidden="true" />
+          <CogIcon className="h-8 w-8 text-white-600 opacity-100" aria-hidden="true" />
         </Menu.Button>
       </div>
 
       <Menu.Items
-        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white bg-opacity-20 backdrop-blur-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white bg-opacity-99 backdrop-blur-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         onClick={handleMenuClick}
         onMouseLeave={handleMouseLeave}
       >
