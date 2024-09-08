@@ -5,6 +5,7 @@ import glob
 # Define input and output directories
 input_dir = "PREPROCESS PHOTOS\\raw photos"
 output_dir = "PREPROCESS PHOTOS\\processed"
+ouput_dir_extension = "rainyExtension\\img\\rotation"
 
 # Create output directory if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)
@@ -14,6 +15,12 @@ files = glob.glob(os.path.join(output_dir, '*'))
 for f in files:
     os.remove(f)
     
+# Delete existing files in output directory
+files = glob.glob(os.path.join(ouput_dir_extension, '*'))
+for f in files:
+    os.remove(f)
+    
+
 # Define target resolutions
 bg_resolution = (384, 256)  # Adjust this to match the provided blurred image resolution
 fg_resolution = (192, 128)   # Adjust this to match the provided smaller image resolution
@@ -34,7 +41,10 @@ for idx, img_path in enumerate(glob.glob(os.path.join(input_dir, "*"))):
             bottom = (bg_img.height + bg_resolution[1]) / 2
             bg_img = bg_img.crop((left, top, right, bottom))
         
-        bg_img.save(os.path.join(output_dir, f"image_{idx+1}_bg.jpg"), "JPEG")
+        bg_img.save(os.path.join(output_dir, f"image-{idx+1}-bg.png"), "PNG")
+        bg_img.save(os.path.join(ouput_dir_extension, f"image-{idx+1}-bg.png"), "PNG")
+
+        
 
         # Create foreground (non-blurred, smaller) image
         fg_img = img.copy()
@@ -48,6 +58,8 @@ for idx, img_path in enumerate(glob.glob(os.path.join(input_dir, "*"))):
             bottom = (fg_img.height + fg_resolution[1]) / 2
             fg_img = fg_img.crop((left, top, right, bottom))
         
-        fg_img.save(os.path.join(output_dir, f"image_{idx+1}_fg.jpg"), "JPEG")
+        fg_img.save(os.path.join(output_dir, f"image-{idx+1}-fg.png"), "PNG")
+        fg_img.save(os.path.join(ouput_dir_extension, f"image-{idx+1}-fg.png"), "PNG")
+
 
 print("Image processing complete.")

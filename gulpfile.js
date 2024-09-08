@@ -5,14 +5,14 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   streamify = require('gulp-streamify'),
   babelify = require("babelify"),
-  // gsap = require("gsap"),
-  gsap = require('gsap/dist/gsap');
+  gsap = require('gsap/dist/gsap'),
   glslify = require("glslify"),
   postcss = require('gulp-postcss'),
   tailwindcss = require('tailwindcss'),
-  autoprefixer = require('autoprefixer');
+  autoprefixer = require('autoprefixer'),
+  path = require('path');
 
-  function compileJS(file){
+function compileJS(file){
   browserify('src/'+file+'.js',{debug:true})
     .transform(babelify, {
       presets: ['@babel/preset-env', '@babel/preset-react'],
@@ -26,6 +26,35 @@ var gulp = require('gulp'),
     .pipe(gulp.dest('rainyExtension/js'));
 }
 
+// New task to count image pairs and generate config
+gulp.task('generate-config', function(done) {
+  const rotationPath = path.join(__dirname, 'rainyExtension', 'img', 'rotation');
+  fs.readdir(rotationPath, (err, files) => {
+    if (err) {
+      console.error('Error reading rotation folder:', err);
+      done(err);
+      return;
+    }
+    const imagePairs = files.filter(file => file.endsWith('-fg.png')).length;
+    const config = {
+      imagePairCount: imagePairs
+    };
+    fs.writeFile(
+      path.join(__dirname, 'src', 'config.json'),
+      JSON.stringify(config, null, 2),
+      (err) => {
+        if (err) {
+          console.error('Error writing config file:', err);
+          done(err);
+          return;
+        }
+        console.log('Config file generated successfully');
+        done();
+      }
+    );
+  });
+});
+
 // Gulp task to process Tailwind CSS
 gulp.task('css', function () {
   return gulp.src('src/tailwind.css')
@@ -36,7 +65,8 @@ gulp.task('css', function () {
     .pipe(gulp.dest('rainyExtension/css'));
 });
 
-gulp.task('default',['js1','js2','js3','js-settings','css'],function(){});
+
+gulp.task('default',['js1','js2','js3','js-settings','css','generate-config'],function(){});
 gulp.task('js1',function(){
   compileJS('index');
 });
@@ -53,4 +83,5 @@ gulp.task('js-settings',function(){
 gulp.task('watch', function() {
   gulp.watch('src/**/*.css', ['css']);
   gulp.watch('src/**/*.js', ['js1', 'js2', 'js3', 'js-settings']);
+  gulp.watch('rainyExtension/img/rotation/*', gulp.series('generate-config'));
 });
