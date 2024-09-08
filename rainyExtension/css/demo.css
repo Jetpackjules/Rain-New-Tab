@@ -27,7 +27,9 @@
 body {
 	font-family: "Avenir Next", Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 	color: #252445;
-	background: #aaa;
+	background-color: black; /* Set this to match your weather background */
+
+	/* background: #aaa; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

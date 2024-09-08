@@ -11,10 +11,10 @@ export default function SettingsMenu() {
   useEffect(() => {
     // Load the visibility states from Chrome storage
     chrome.storage.sync.get(['weatherVisible', 'dateVisible', 'temperatureVisible'], (result) => {
-      if (result.weatherVisible !== undefined) {
-        setWeatherVisible(result.weatherVisible);
-        updateVisibility('weather-module', result.weatherVisible);
-      }
+      // if (result.weatherVisible !== undefined) {
+      //   setWeatherVisible(result.weatherVisible);
+      //   updateVisibility('weather-module', result.weatherVisible);
+      // }
       if (result.dateVisible !== undefined) {
         setDateVisible(result.dateVisible);
         updateVisibility('date-module', result.dateVisible);
@@ -60,39 +60,18 @@ export default function SettingsMenu() {
   return (
     <Menu as="div" className="relative inline-block text-left z-10">
       <div>
-        <Menu.Button className="inline-flex justify-center w-full rounded-md border-none shadow-none bg-transparent text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-          <CogIcon className="h-8 w-8 text-gray-600 opacity-90" aria-hidden="true" />
+        <Menu.Button className="inline-flex justify-center w-full rounded-md border-none shadow-none bg-transparent text-sm font-medium text-white-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+          <CogIcon className="h-8 w-8 text-white-600 opacity-40" aria-hidden="true" />
         </Menu.Button>
       </div>
 
       <Menu.Items
-        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-transparent backdrop-blur-sm ring-1 ring-black ring-opacity-5 focus:outline-none"
+        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white bg-opacity-20 backdrop-blur-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         onClick={handleMenuClick}
         onMouseLeave={handleMouseLeave}
       >
         <div className="py-1">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 font-sans"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleVisibility(setWeatherVisible, weatherVisible, 'weatherVisible', 'weather-module');
-                }}
-              >
-                <div className="flex justify-between items-center">
-                  <span>Show Weather</span>
-                  <input
-                    type="checkbox"
-                    checked={weatherVisible}
-                    onChange={() => toggleVisibility(setWeatherVisible, weatherVisible, 'weatherVisible', 'weather-module')}
-                    className="custom-checkbox pointer-events-none"
-                  />
-                </div>
-              </a>
-            )}
-          </Menu.Item>
+
           <Menu.Item>
             {({ active }) => (
               <a
@@ -137,7 +116,29 @@ export default function SettingsMenu() {
               </a>
             )}
           </Menu.Item>
-        <Menu.Item>
+          {/* <Menu.Item>
+            {({ active }) => (
+              <a
+                href="#"
+                className="block px-4 py-2 text-sm text-gray-700 font-sans"
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleVisibility(setWeatherVisible, weatherVisible, 'weatherVisible', 'weather-module');
+                }}
+              >
+                <div className="flex justify-between items-center">
+                  <span>Show Weather</span>
+                  <input
+                    type="checkbox"
+                    checked={weatherVisible}
+                    onChange={() => toggleVisibility(setWeatherVisible, weatherVisible, 'weatherVisible', 'weather-module')}
+                    className="custom-checkbox pointer-events-none"
+                  />
+                </div>
+              </a>
+            )}
+          </Menu.Item> */}
+        <Menu.Item> 
         <a href="https://ko-fi.com/A0A5131I72" target="_blank">
             <div className="flex justify-center items-center">
             <img

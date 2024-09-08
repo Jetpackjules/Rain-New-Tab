@@ -73,12 +73,14 @@
 .icon--storm:before {
 	content: "\e906";
 }
-
+body {
+	background-color: black; /* Set this to match your weather background */
+  }
 .slideshow {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	background: url(../img/city.jpg) no-repeat center top;
+	background:black;
 	background-size: cover;
 	overflow: hidden;
 }
