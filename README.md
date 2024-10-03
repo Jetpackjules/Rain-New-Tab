@@ -18,7 +18,7 @@ npm install gulp@3.9.1 --save-dev
 
 #### FOR WINDOWS:
 >```
->Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.10/nvm-setup.zip" -OutFile >"$env:TEMP\nvm-setup.zip"
+>Invoke-WebRequest -Uri "https://github.com/coreybutler/nvm-windows/releases/download/1.1.10/nvm-setup.zip" -OutFile "$env:TEMP\nvm-setup.zip"
 >Expand-Archive -Path "$env:TEMP\nvm-setup.zip" -DestinationPath "$env:TEMP\nvm"
 >Start-Process "$env:TEMP\nvm\nvm-setup.exe"
 >```
