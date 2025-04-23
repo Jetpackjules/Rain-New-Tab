@@ -85,6 +85,33 @@ Raindrops.prototype={
 
     this.update();
   },
+  resize(width, height) {
+    // console.log(`Raindrops resizing to: ${width}x${height}`); // Debugging
+
+    // Update internal dimensions
+    this.width = width;
+    this.height = height;
+
+    // Resize internal canvases (drops and droplets)
+    // Main canvas (where drops are drawn onto)
+    this.canvas.width = this.width;
+    this.canvas.height = this.height;
+
+    // Droplets texture canvas (needs pixel density)
+    const dropletsWidth = this.width * this.dropletsPixelDensity;
+    const dropletsHeight = this.height * this.dropletsPixelDensity;
+    this.droplets.width = dropletsWidth;
+    this.droplets.height = dropletsHeight;
+
+    // Optional: Clear existing state if resize causes issues
+    // this.drops = [];
+    // this.clearTexture();
+    // this.dropletsCtx.clearRect(0, 0, dropletsWidth, dropletsHeight);
+
+    // Note: Existing drops might now be off-screen or positioned incorrectly.
+    // A more robust solution might reposition/remove drops on resize.
+    // For now, just resizing the canvases is the first step.
+  },
   get deltaR(){
     return this.options.maxR-this.options.minR;
   },

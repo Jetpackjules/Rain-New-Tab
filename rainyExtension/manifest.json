@@ -1,7 +1,7 @@
 
 {
   "name": "Rainy Day New Tab",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "manifest_version": 3,
   "chrome_url_overrides": {
     "newtab": "index.html"

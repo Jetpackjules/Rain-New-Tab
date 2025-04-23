@@ -138,7 +138,7 @@ body {
 .nav-item:hover,
 .nav-item:focus,
 .nav-item--current {
-	color: #fff;
+	color: green;
 }
 
 .nav-item .icon {

@@ -69,37 +69,39 @@ function loadTextures() {
     {name:"textureRainFg",src:`img/rotation/image-${8}-fg.png`},
     {name:"textureRainBg",src:`img/rotation/image-${8}-bg.png`},
 
-    {name:"textureStormLightningFg",src:"img/weather/texture-storm-lightning-fg.png"},
-    {name:"textureStormLightningBg",src:"img/weather/texture-storm-lightning-bg.png"},
+    // {name:"textureStormLightningFg",src:"img/weather/texture-storm-lightning-fg.png"},
+    // {name:"textureStormLightningBg",src:"img/weather/texture-storm-lightning-bg.png"},
 
-    {name:"textureFalloutFg",src:"img/weather/texture-fallout-fg.png"},
-    {name:"textureFalloutBg",src:"img/weather/texture-fallout-bg.png"},
+    // {name:"textureFalloutFg",src:"img/weather/texture-fallout-fg.png"},
+    // {name:"textureFalloutBg",src:"img/weather/texture-fallout-bg.png"},
 
-    {name:"textureSunFg",src:"img/weather/texture-sun-fg.png"},
-    {name:"textureSunBg",src:"img/weather/texture-sun-bg.png"},
+    // {name:"textureSunFg",src:"img/weather/texture-sun-fg.png"},
+    // {name:"textureSunBg",src:"img/weather/texture-sun-bg.png"},
 
-    {name:"textureDrizzleFg",src:"img/weather/texture-drizzle-fg.png"},
-    {name:"textureDrizzleBg",src:"img/weather/texture-drizzle-bg.png"},
+    // {name:"textureDrizzleFg",src:"img/weather/texture-drizzle-fg.png"},
+    // {name:"textureDrizzleBg",src:"img/weather/texture-drizzle-bg.png"},
   ]).then((images)=>{
     textureRainFg = images.textureRainFg.img;
     textureRainBg = images.textureRainBg.img;
 
-    textureFalloutFg = images.textureFalloutFg.img;
-    textureFalloutBg = images.textureFalloutBg.img;
+    // textureFalloutFg = images.textureFalloutFg.img;
+    // textureFalloutBg = images.textureFalloutBg.img;
 
-    textureStormLightningFg = images.textureStormLightningFg.img;
-    textureStormLightningBg = images.textureStormLightningBg.img;
+    // textureStormLightningFg = images.textureStormLightningFg.img;
+    // textureStormLightningBg = images.textureStormLightningBg.img;
 
-    textureSunFg = images.textureSunFg.img;
-    textureSunBg = images.textureSunBg.img;
+    // textureSunFg = images.textureSunFg.img;
+    // textureSunBg = images.textureSunBg.img;
 
-    textureDrizzleFg = images.textureDrizzleFg.img;
-    textureDrizzleBg = images.textureDrizzleBg.img;
+    // textureDrizzleFg = images.textureDrizzleFg.img;
+    // textureDrizzleBg = images.textureDrizzleBg.img;
 
     dropColor = images.dropColor.img;
     dropAlpha = images.dropAlpha.img;
 
-    init();
+    requestAnimationFrame(init);
+
+    // init();
   });
 }
 loadTextures();
@@ -108,10 +110,15 @@ function init(){
   canvas=document.querySelector('#container');
 
   let dpi=window.devicePixelRatio;
-  canvas.width=window.innerWidth*dpi;
-  canvas.height=window.innerHeight*dpi;
-  canvas.style.width=window.innerWidth+"px";
-  canvas.style.height=window.innerHeight+"px";
+  const width = document.documentElement.clientWidth;
+  const height = document.documentElement.clientHeight;
+
+  // console.log(`Initial size set to: ${width}x${height}`); // Add for debugging
+
+  canvas.width = width * dpi;
+  canvas.height = height * dpi;
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
 
   raindrops=new Raindrops(
     canvas.width,
@@ -149,7 +156,40 @@ function setupEvents(){
   setupParallax();
   setupWeather();
   setupFlash();
+
+  window.addEventListener('resize', handleResize);
 }
+
+// ---- ADD THIS HANDLER FUNCTION ----
+function handleResize() {
+  // Use the reliable dimensions
+  const width = document.documentElement.clientWidth;
+  const height = document.documentElement.clientHeight;
+  const dpi = window.devicePixelRatio;
+
+  // Calculate dimensions needed by raindrops/renderer (might be with or without DPI)
+  // Raindrops constructor took canvas.width/height (which included DPI in init)
+  // RainRenderer resize uses clientWidth/Height and calculates DPI inside
+
+  // console.log("Window resize event triggered."); // Debugging
+
+  // Resize the main canvas style (CSS pixels) - important for layout
+  if (canvas) { // Check if canvas exists
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+}
+  // Resize the renderer (which handles its canvas attributes and GL viewport)
+  if (renderer && renderer.resize) {
+    renderer.resize(); // Renderer resize calculates its own dimensions internally now
+  }
+
+  // Resize the raindrops simulation (pass dimensions including DPI)
+  if (raindrops && raindrops.resize) {
+     // Pass the drawing buffer size (CSS size * DPI) to raindrops resize
+     raindrops.resize(width * dpi, height * dpi);
+  }
+}
+
 function setupParallax(){
   document.addEventListener('mousemove',(event)=>{
     let x=event.pageX;
@@ -287,11 +327,11 @@ function updateWeather(){
   let lastSlide=document.querySelector(".slide--current");
   if(lastSlide!=null) lastSlide.classList.remove("slide--current");
 
-  let lastNav=document.querySelector(".nav-item--current");
-  if(lastNav!=null) lastNav.classList.remove("nav-item--current");
+  // let lastNav=document.querySelector(".nav-item--current");
+  // if(lastNav!=null) lastNav.classList.remove("nav-item--current");
 
   currentSlide.classList.add("slide--current");
-  currentNav.classList.add("nav-item--current");
+  // currentNav.classList.add("nav-item--current");
 }
 
 function flash(baseBg,baseFg,flashBg,flashFg){

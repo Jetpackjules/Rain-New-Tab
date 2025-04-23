@@ -8,14 +8,21 @@
 	
 	<title>Rain Effect Experiments | Demo 1 | Codrops</title>
 	<link rel="shortcut icon" href="icon128.png">
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+
+
+
+
+	<link rel="preload" as="script" href="js/index.min.js" crossOrigin="anonymous">
+    <link rel="preload" as="image" href="img/drop-alpha.png">
+    <link rel="preload" as="image" href="img/drop-color.png">
+    <!-- <link rel="preload" as="image" href="img/rotation/image-8-fg.png">  -->
+
+
+	<link rel="stylesheet" type="text/css" href="css/tailwind.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/style1.css" />
-	<link rel="stylesheet" type="text/css" href="css/tailwind.css" />
-	<!--[if IE]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
 </head>
 
 <body class="demo-1">
@@ -87,7 +94,7 @@
 		<img src="img/rotation/image-28-bg.png" />
 		<img src="img/rotation/image-28-fg.png" />
 	</div>
-	<div class="container">
+	<div>
 		<header class="codrops-header">
 			<!-- <nav class="codrops-demos">
 				<a class="current-demo" href="index.html">Weather</a>
@@ -127,13 +134,13 @@
 				<div class="slide__element slide__element--date">Date Pending...</div>
 				<div class="slide__element slide__element--temp">..°<small>F</small></div>
 			</div>
-			<nav class="slideshow__nav hidden" id="weather-module">
-				<a class="nav-item" href="#slide-1"><i class="icon icon--rainy"></i><span>10/24</span></a>
+			<!-- <nav class="slideshow__nav hidden" id="weather-module"> -->
+				<!-- <a class="nav-item" href="#slide-1"><i class="icon icon--rainy"></i><span>10/24</span></a>
 				<a class="nav-item" href="#slide-2"><i class="icon icon--drizzle"></i><span>10/25</span></a>
 				<a class="nav-item" href="#slide-3"><i class="icon icon--sun"></i><span>10/26</span></a>
 				<a class="nav-item" href="#slide-5"><i class="icon icon--storm"></i><span>10/28</span></a>
-				<a class="nav-item" href="#slide-4"><i class="icon icon--radioactive"></i><span>10/27</span></a>
-			</nav>
+				<a class="nav-item" href="#slide-4"><i class="icon icon--radioactive"></i><span>10/27</span></a> -->
+			<!-- </nav> -->
 		</div>
 		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
 	</div>

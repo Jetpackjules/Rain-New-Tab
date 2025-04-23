@@ -90,6 +90,56 @@ RainRenderer.prototype={
 
     requestAnimationFrame(this.draw.bind(this));
   },
+  resize(){
+    // Get the current actual size of the main canvas element
+    const width = this.canvas.clientWidth;
+    const height = this.canvas.clientHeight;
+    const dpi = window.devicePixelRatio;
+
+    // Calculate display size vs drawing buffer size
+    const displayWidth = Math.round(width * dpi);
+    const displayHeight = Math.round(height * dpi);
+
+    // console.log(`RainRenderer resizing. Client: ${width}x${height}, Display: ${displayWidth}x${displayHeight}`); // Debugging
+
+    // Check if dimensions actually changed
+    if (this.canvas.width !== displayWidth || this.canvas.height !== displayHeight) {
+
+      // Update the main canvas attributes
+      this.canvas.width = displayWidth;
+      this.canvas.height = displayHeight;
+
+       // Update internal width/height properties (optional but good practice)
+       this.width = displayWidth;
+       this.height = displayHeight;
+
+
+      // Update the WebGL viewport
+      // Use this.gl.gl if gl-obj wraps the context in a 'gl' property
+      // Or just this.gl if gl-obj returns the context directly
+      // Check gl-obj.js - it stores the context in this.gl
+      if (this.gl && this.gl.gl && this.gl.gl.viewport) {
+          this.gl.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+          // console.log(`Viewport updated to: ${this.canvas.width}x${this.canvas.height}`); // Debugging
+      } else {
+           console.error("Could not access gl.viewport");
+      }
+
+
+      // Update the resolution uniform
+      // Use this.gl which is the GL object wrapper from gl-obj.js
+       if (this.gl && this.gl.createUniform) {
+         this.gl.useProgram(this.programWater); // Ensure correct program is active
+         this.gl.createUniform("2f", "resolution", this.canvas.width, this.canvas.height);
+        //  console.log(`Resolution uniform updated to: ${this.canvas.width}x${this.canvas.height}`); // Debugging
+       } else {
+         console.error("Could not access gl.createUniform");
+       }
+
+
+      // Note: Camera aspect ratio update would go here if there was a camera object
+    }
+  },
   updateTextures(){
     this.textures.forEach((texture,i)=>{
       this.gl.activeTexture(i+1);
@@ -99,9 +149,6 @@ RainRenderer.prototype={
   updateTexture(){
     this.gl.activeTexture(0);
     this.gl.updateTexture(this.canvasLiquid);
-  },
-  resize(){
-
   },
   get overlayTexture(){
 

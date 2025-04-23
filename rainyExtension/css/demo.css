@@ -6,6 +6,41 @@
 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
+/* Add this to demo.css or style1.css OR a new CSS file */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Crucial to prevent scrollbars interfering with size */
+    background-color: rgba(75, 85, 99, 0.9); /* Explicit background */
+}
+.slideshow {
+    position: absolute; /* Position relative to body */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Fill the body */
+    height: 100%; /* Fill the body */
+    overflow: hidden;
+    /* background: black; /* Base color if canvas fails */
+    /* z-index: -1; /* Optional: Send behind other content if needed */
+}
+
+#container { /* The canvas */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Style to fill slideshow */
+    height: 100%; /* Style to fill slideshow */
+    display: block;
+}
+
+/* Ensure header and nav are above the canvas */
+ .codrops-header, #root, .slideshow__nav {
+    position: relative; /* Or absolute */
+    z-index: 10; /* Or higher */
+}
+
 
 *,
 *:after,
@@ -27,7 +62,7 @@
 body {
 	font-family: "Avenir Next", Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 	color: #252445;
-	background-color: black; /* Set this to match your weather background */
+	background-color: rgba(75, 85, 99, 0.9); /* Set this to match your weather background */
 
 	/* background: #aaa; */
 	-webkit-font-smoothing: antialiased;
@@ -36,7 +71,7 @@ body {
 
 a {
 	outline: none;
-	color: #fff;
+	color: black;
 	text-decoration: none;
 }
 
