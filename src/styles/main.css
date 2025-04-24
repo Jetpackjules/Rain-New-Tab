@@ -1,0 +1,10 @@
+/* src/styles/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Add any custom CSS rules you want BELOW the @tailwind directives */
+/* For example: */
+/* body { */
+/*   background-color: #111; */
+/* } */
